@@ -8,7 +8,7 @@ namespace ClotherApp.Domain
     public class Clother
     {
         public int Id { get; set; }
-        public string Code { get; set; }
+        public string Name { get; set; }
         public int ClotherTypeId { get; set; }
         public ClotherType ClotherType { get; set; }
         public int BrandId { get; set; }
