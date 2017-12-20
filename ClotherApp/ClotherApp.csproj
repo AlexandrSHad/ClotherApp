@@ -159,9 +159,11 @@
     <Compile Include="Data\Repositories\Interfaces\IBrandRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IClotherRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IClotherTypeRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IPictureRepository.cs" />
     <Compile Include="Domain\Brand.cs" />
     <Compile Include="Domain\Clother.cs" />
     <Compile Include="Domain\ClotherType.cs" />
+    <Compile Include="Domain\Picture.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,6 +174,10 @@
     <Compile Include="Migrations\201712171628100_RenameClotherCodeToName.cs" />
     <Compile Include="Migrations\201712171628100_RenameClotherCodeToName.Designer.cs">
       <DependentUpon>201712171628100_RenameClotherCodeToName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712202018253_AddPictures.cs" />
+    <Compile Include="Migrations\201712202018253_AddPictures.Designer.cs">
+      <DependentUpon>201712202018253_AddPictures.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClotherViewModel.cs" />
@@ -245,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712171628100_RenameClotherCodeToName.resx">
       <DependentUpon>201712171628100_RenameClotherCodeToName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712202018253_AddPictures.resx">
+      <DependentUpon>201712202018253_AddPictures.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

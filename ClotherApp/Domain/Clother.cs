@@ -13,5 +13,7 @@ namespace ClotherApp.Domain
         public ClotherType ClotherType { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+
+        public List<Picture> Pictures { get; set; }
     }
 }

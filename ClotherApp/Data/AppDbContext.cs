@@ -12,5 +12,6 @@ namespace ClotherApp.Data
         public DbSet<ClotherType> ClotherTypes { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Clother> Clothers { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
     }
 }
