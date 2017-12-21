@@ -9,10 +9,23 @@ using System.Web.Mvc;
 
 namespace ClotherApp.Models
 {
-    //public class ClotherIndexViewModel
-    //{
-    //    //public List<ClotherListView>
-    //}
+    public class ClotherIndexViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        [Display(Name = "Clother type")]
+        public string ClotherTypeName { get; set; }
+        [Display(Name = "Brand")]
+        public string BrandName { get; set; }
+
+        public ClotherIndexViewModel(Clother clother)
+        {
+            Id = clother.Id;
+            Name = clother.Name;
+            ClotherTypeName = clother.ClotherType.Name;
+            BrandName = clother.Brand.Name;
+        }
+    }
 
     public class ClotherCreateViewModel
     {

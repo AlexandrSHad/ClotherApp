@@ -20,7 +20,7 @@ namespace ClotherApp.Controllers
         // GET: Clother
         public ActionResult Index()
         {
-            var clothers = _clotherService.GetAllClother();
+            var clothers = _clotherService.GetAllClother().Select(s => new ClotherIndexViewModel(s));
             return View(clothers.ToList());
         }
 
