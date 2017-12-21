@@ -26,7 +26,7 @@ namespace ClotherApp.Data.Repositories
 
         public Clother GetById(int id)
         {
-            return _context.Clothers.Find(id);
+            return _context.Clothers.Include(c => c.Pictures).Single(c => c.Id == id);
         }
 
         public void Update(Clother clother)

@@ -19,5 +19,7 @@ namespace ClotherApp.Services.Interfaces
 
         void CreateBrand(Brand brand);
         IEnumerable<Brand> GetAllBrands();
+
+        void CreatePictureForClother(int clotherId, System.Web.HttpPostedFileBase uploadImage);
     }
 }

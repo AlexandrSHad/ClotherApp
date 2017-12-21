@@ -84,7 +84,12 @@ namespace ClotherApp.Controllers
                     Id = clother.Id,
                     Name = clother.Name,
                     BrandId = clother.BrandId,
-                    ClotherTypeId = clother.ClotherTypeId
+                    ClotherTypeId = clother.ClotherTypeId,
+                    Pictures = clother.Pictures
+                },
+                FormId = new ClotherIdForm
+                {
+                    Id = clother.Id
                 }
             });
         }
@@ -130,6 +135,20 @@ namespace ClotherApp.Controllers
         //    db.SaveChanges();
         //    return RedirectToAction("Index");
         //}
+
+        [HttpPost]
+        public ActionResult UploadPicture([Bind(Include = "FormId")] ClotherCreateViewModel model, HttpPostedFileBase[] uploadImages)
+        {
+            foreach (var img in uploadImages)
+            {
+                if (img != null)
+                {
+                    _clotherService.CreatePictureForClother(model.FormId.Id, img);
+                }
+            }
+
+            return RedirectToAction("Edit", new { id = model.FormId.Id });
+        }
 
         //protected override void Dispose(bool disposing)
         //{

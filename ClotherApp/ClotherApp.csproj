@@ -160,6 +160,7 @@
     <Compile Include="Data\Repositories\Interfaces\IClotherRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IClotherTypeRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IPictureRepository.cs" />
+    <Compile Include="Data\Repositories\PictureRepository.cs" />
     <Compile Include="Domain\Brand.cs" />
     <Compile Include="Domain\Clother.cs" />
     <Compile Include="Domain\ClotherType.cs" />
@@ -199,6 +200,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\inputfile.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

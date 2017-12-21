@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClotherApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -18,6 +19,7 @@ namespace ClotherApp.Models
         public SelectList ClotherTypes { get; set; }
         public SelectList Brands { get; set; }
         public ClotherCreateForm Form { get; set; }
+        public ClotherIdForm FormId { get; set; }
     }
 
     public class ClotherCreateForm
@@ -34,5 +36,12 @@ namespace ClotherApp.Models
         [Required]
         [Display(Name = "Brand")]
         public int BrandId { get; set; }
+
+        public List<Picture> Pictures { get; set; }
+    }
+
+    public class ClotherIdForm
+    {
+        public int Id { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace ClotherApp.Services
         private readonly ClotherRepository _clotherRepository = new ClotherRepository();
         private readonly ClotherTypeRepository _clotherTypeRepository = new ClotherTypeRepository();
         private readonly BrandRepository _brandRepository = new BrandRepository();
+        private readonly PictureRepository _pictureRepository = new PictureRepository();
 
         public void CreateClother(Clother clother)
         {
@@ -52,6 +53,24 @@ namespace ClotherApp.Services
         public IEnumerable<ClotherType> GetAllClotherTypes()
         {
             return _clotherTypeRepository.GetAll();
+        }
+
+        public void CreatePictureForClother(int clotherId, HttpPostedFileBase uploadImage)
+        {
+            byte[] imgData = new byte[uploadImage.ContentLength];
+            using (var inputStream = uploadImage.InputStream)
+            {
+                inputStream.Read(imgData, 0, uploadImage.ContentLength);
+            }
+
+            var picture = new Picture
+            {
+                ClotherId = clotherId,
+                Image = imgData,
+                Name = uploadImage.FileName
+            };
+
+            _pictureRepository.Create(picture);
         }
     }
 }
