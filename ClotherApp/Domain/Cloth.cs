@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClotherApp.Domain
+namespace ClothApp.Domain
 {
-    public class Clother
+    public class Cloth
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int ClotherTypeId { get; set; }
-        public ClotherType ClotherType { get; set; }
+        public int ClothTypeId { get; set; }
+        public ClothType ClothType { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
 

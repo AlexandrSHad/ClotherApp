@@ -1,11 +1,11 @@
-﻿using ClotherApp.Data.Repositories.Interfaces;
-using ClotherApp.Domain;
+﻿using ClothApp.Data.Repositories.Interfaces;
+using ClothApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClotherApp.Data.Repositories
+namespace ClothApp.Data.Repositories
 {
     public class BrandRepository : IBrandRepository
     {

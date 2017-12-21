@@ -1,38 +1,38 @@
-﻿using ClotherApp.Data.Repositories;
-using ClotherApp.Domain;
-using ClotherApp.Services.Interfaces;
+﻿using ClothApp.Data.Repositories;
+using ClothApp.Domain;
+using ClothApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClotherApp.Services
+namespace ClothApp.Services
 {
-    public class ClotherService : IClotherService
+    public class ClothService : IClothService
     {
-        private readonly ClotherRepository _clotherRepository = new ClotherRepository();
-        private readonly ClotherTypeRepository _clotherTypeRepository = new ClotherTypeRepository();
+        private readonly ClothRepository _clothRepository = new ClothRepository();
+        private readonly ClothTypeRepository _clothTypeRepository = new ClothTypeRepository();
         private readonly BrandRepository _brandRepository = new BrandRepository();
         private readonly PictureRepository _pictureRepository = new PictureRepository();
 
-        public void CreateClother(Clother clother)
+        public void CreateCloth(Cloth cloth)
         {
-            _clotherRepository.Create(clother);
+            _clothRepository.Create(cloth);
         }
 
-        public IEnumerable<Clother> GetAllClother()
+        public IEnumerable<Cloth> GetAllClothes()
         {
-            return _clotherRepository.GetAll();
+            return _clothRepository.GetAll();
         }
 
-        public Clother GetClotherById(int id)
+        public Cloth GetClothById(int id)
         {
-            return _clotherRepository.GetById(id);
+            return _clothRepository.GetById(id);
         }
 
-        public void UpdateClother(Clother clother)
+        public void UpdateCloth(Cloth cloth)
         {
-            _clotherRepository.Update(clother);
+            _clothRepository.Update(cloth);
         }
 
         public void CreateBrand(Brand brand)
@@ -45,17 +45,17 @@ namespace ClotherApp.Services
             return _brandRepository.GetAll();
         }
 
-        public void CreateClotherType(ClotherType clotherType)
+        public void CreateClothType(ClothType clothType)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ClotherType> GetAllClotherTypes()
+        public IEnumerable<ClothType> GetAllClothTypes()
         {
-            return _clotherTypeRepository.GetAll();
+            return _clothTypeRepository.GetAll();
         }
 
-        public void CreatePictureForClother(int clotherId, HttpPostedFileBase uploadImage)
+        public void CreatePictureForCloth(int clothId, HttpPostedFileBase uploadImage)
         {
             byte[] imgData = new byte[uploadImage.ContentLength];
             using (var inputStream = uploadImage.InputStream)
@@ -65,7 +65,7 @@ namespace ClotherApp.Services
 
             var picture = new Picture
             {
-                ClotherId = clotherId,
+                ClothId = clothId,
                 Image = imgData,
                 Name = uploadImage.FileName
             };

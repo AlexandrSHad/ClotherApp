@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ClotherApp.Models
+namespace ClothApp.Models
 {
     public static class SelectListExtension
     {

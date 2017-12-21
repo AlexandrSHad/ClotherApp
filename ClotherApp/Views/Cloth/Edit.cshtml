@@ -1,4 +1,4 @@
-﻿@model ClotherApp.Models.ClotherCreateViewModel
+﻿@model ClothApp.Models.ClothCreateViewModel
 
 @{
     ViewBag.Title = "Edit " + Model.Form.Name;
@@ -36,10 +36,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.Form.ClotherTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(m => m.Form.ClothTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.Form.ClotherTypeId, Model.ClotherTypes, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Form.ClotherTypeId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(m => m.Form.ClothTypeId, Model.ClothTypes, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Form.ClothTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -53,11 +53,11 @@
 
 <hr />
 
-@using (Html.BeginForm("UploadPicture", "Clother", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadPicture", "Cloth", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 <div class="form-horizontal" style="margin-top: 10px;">
 
-    @Html.HiddenFor(m => m.UploadPictureForm.ClotherId)
+    @Html.HiddenFor(m => m.UploadPictureForm.ClothId)
 
     <div class="input-group">
         <label class="input-group-btn">

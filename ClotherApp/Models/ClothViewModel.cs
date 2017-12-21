@@ -1,4 +1,4 @@
-﻿using ClotherApp.Domain;
+﻿using ClothApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,35 +7,35 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ClotherApp.Models
+namespace ClothApp.Models
 {
-    public class ClotherIndexViewModel
+    public class ClothIndexViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        [Display(Name = "Clother type")]
-        public string ClotherTypeName { get; set; }
+        [Display(Name = "Cloth type")]
+        public string ClothTypeName { get; set; }
         [Display(Name = "Brand")]
         public string BrandName { get; set; }
 
-        public ClotherIndexViewModel(Clother clother)
+        public ClothIndexViewModel(Cloth cloth)
         {
-            Id = clother.Id;
-            Name = clother.Name;
-            ClotherTypeName = clother.ClotherType.Name;
-            BrandName = clother.Brand.Name;
+            Id = cloth.Id;
+            Name = cloth.Name;
+            ClothTypeName = cloth.ClothType.Name;
+            BrandName = cloth.Brand.Name;
         }
     }
 
-    public class ClotherCreateViewModel
+    public class ClothCreateViewModel
     {
-        public SelectList ClotherTypes { get; set; }
+        public SelectList ClothTypes { get; set; }
         public SelectList Brands { get; set; }
-        public ClotherCreateForm Form { get; set; }
+        public ClothCreateForm Form { get; set; }
         public UploadPictureForm UploadPictureForm { get; set; }
     }
 
-    public class ClotherCreateForm
+    public class ClothCreateForm
     {
         public int Id { get; set; }
 
@@ -44,7 +44,7 @@ namespace ClotherApp.Models
 
         [Required]
         [Display(Name = "Clother type")]
-        public int ClotherTypeId { get; set; }
+        public int ClothTypeId { get; set; }
 
         [Required]
         [Display(Name = "Brand")]
@@ -55,6 +55,6 @@ namespace ClotherApp.Models
 
     public class UploadPictureForm
     {
-        public int ClotherId { get; set; }
+        public int ClothId { get; set; }
     }
 }

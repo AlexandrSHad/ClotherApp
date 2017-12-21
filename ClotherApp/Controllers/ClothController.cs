@@ -6,21 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ClotherApp.Data;
-using ClotherApp.Domain;
-using ClotherApp.Models;
-using ClotherApp.Services;
+using ClothApp.Data;
+using ClothApp.Domain;
+using ClothApp.Models;
+using ClothApp.Services;
 
-namespace ClotherApp.Controllers
+namespace ClothApp.Controllers
 {
-    public class ClotherController : Controller
+    public class ClothController : Controller
     {
-        private readonly ClotherService _clotherService = new ClotherService();
+        private readonly ClothService _clotherService = new ClothService();
 
         // GET: Clother
         public ActionResult Index()
         {
-            var clothers = _clotherService.GetAllClother().Select(s => new ClotherIndexViewModel(s));
+            var clothers = _clotherService.GetAllClothes().Select(s => new ClothIndexViewModel(s));
             return View(clothers.ToList());
         }
 
@@ -42,9 +42,9 @@ namespace ClotherApp.Controllers
         // GET: Clother/Create
         public ActionResult Create()
         {
-            return View(new ClotherCreateViewModel
+            return View(new ClothCreateViewModel
             {
-                ClotherTypes = _clotherService.GetAllClotherTypes().ToSelectList("Id", "Name"),
+                ClothTypes = _clotherService.GetAllClothTypes().ToSelectList("Id", "Name"),
                 Brands = _clotherService.GetAllBrands().ToSelectList("Id", "Name"),
             });
         }
@@ -52,11 +52,11 @@ namespace ClotherApp.Controllers
         // POST: Clother/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Form")] ClotherCreateViewModel model)
+        public ActionResult Create([Bind(Include = "Form")] ClothCreateViewModel model)
         {
-            _clotherService.CreateClother(new Clother {
+            _clotherService.CreateCloth(new Cloth {
                 Name = model.Form.Name,
-                ClotherTypeId = model.Form.ClotherTypeId,
+                ClothTypeId = model.Form.ClothTypeId,
                 BrandId = model.Form.BrandId
             });
 
@@ -70,26 +70,26 @@ namespace ClotherApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clother clother = _clotherService.GetClotherById(id);
+            Cloth clother = _clotherService.GetClothById(id);
             if (clother == null)
             {
                 return HttpNotFound();
             }
 
-            return View(new ClotherCreateViewModel {
-                ClotherTypes = _clotherService.GetAllClotherTypes().ToSelectList("Id", "Name", clother.ClotherTypeId),
+            return View(new ClothCreateViewModel {
+                ClothTypes = _clotherService.GetAllClothTypes().ToSelectList("Id", "Name", clother.ClothTypeId),
                 Brands = _clotherService.GetAllBrands().ToSelectList("Id", "Name", clother.BrandId),
-                Form = new ClotherCreateForm
+                Form = new ClothCreateForm
                 {
                     Id = clother.Id,
                     Name = clother.Name,
                     BrandId = clother.BrandId,
-                    ClotherTypeId = clother.ClotherTypeId,
+                    ClothTypeId = clother.ClothTypeId,
                     Pictures = clother.Pictures
                 },
                 UploadPictureForm = new UploadPictureForm
                 {
-                    ClotherId = clother.Id
+                    ClothId = clother.Id
                 }
             });
         }
@@ -97,13 +97,13 @@ namespace ClotherApp.Controllers
         // POST: Clother/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Form")] ClotherCreateViewModel model)
+        public ActionResult Edit([Bind(Include = "Form")] ClothCreateViewModel model)
         {
-            _clotherService.UpdateClother(new Clother
+            _clotherService.UpdateCloth(new Cloth
             {
                 Id = model.Form.Id,
                 Name = model.Form.Name,
-                ClotherTypeId = model.Form.ClotherTypeId,
+                ClothTypeId = model.Form.ClothTypeId,
                 BrandId = model.Form.BrandId
             });
 
@@ -137,17 +137,17 @@ namespace ClotherApp.Controllers
         //}
 
         [HttpPost]
-        public ActionResult UploadPicture([Bind(Include = "UploadPictureForm")] ClotherCreateViewModel model, HttpPostedFileBase[] uploadImages)
+        public ActionResult UploadPicture([Bind(Include = "UploadPictureForm")] ClothCreateViewModel model, HttpPostedFileBase[] uploadImages)
         {
             foreach (var img in uploadImages)
             {
                 if (img != null)
                 {
-                    _clotherService.CreatePictureForClother(model.UploadPictureForm.ClotherId, img);
+                    _clotherService.CreatePictureForCloth(model.UploadPictureForm.ClothId, img);
                 }
             }
 
-            return RedirectToAction("Edit", new { id = model.UploadPictureForm.ClotherId });
+            return RedirectToAction("Edit", new { id = model.UploadPictureForm.ClothId });
         }
 
         //protected override void Dispose(bool disposing)

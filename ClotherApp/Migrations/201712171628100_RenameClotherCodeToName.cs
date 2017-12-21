@@ -1,4 +1,4 @@
-namespace ClotherApp.Migrations
+namespace ClothApp.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

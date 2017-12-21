@@ -7,14 +7,18 @@ using System.Web;
 
 namespace ClothApp.Data.Repositories
 {
-    public class PictureRepository : IPictureRepository
+    public class ClothTypeRepository : IClothTypeRepository
     {
         private readonly AppDbContext _context = new AppDbContext();
 
-        public void Create(Picture picture)
+        public void Create(ClothType clotherType)
         {
-            _context.Pictures.Add(picture);
-            _context.SaveChanges();
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ClothType> GetAll()
+        {
+            return _context.ClothTypes.ToList();
         }
     }
 }

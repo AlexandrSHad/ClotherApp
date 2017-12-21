@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClotherApp.Domain
+namespace ClothApp.Domain
 {
-    public class ClotherType
+    public class ClothType
     {
         public int Id { get; set; }
         public string Name { get; set; }

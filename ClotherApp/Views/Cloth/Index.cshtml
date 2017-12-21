@@ -1,7 +1,7 @@
-﻿@model IEnumerable<ClotherApp.Models.ClotherIndexViewModel>
+﻿@model IEnumerable<ClothApp.Models.ClothIndexViewModel>
 
 @{
-    ViewBag.Title = "Clother list";
+    ViewBag.Title = "Clothes list";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.BrandName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClotherTypeName)
+            @Html.DisplayNameFor(model => model.ClothTypeName)
         </th>
         <th></th>
     </tr>
@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.BrandName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClotherTypeName)
+            @Html.DisplayFor(modelItem => item.ClothTypeName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace ClothApp.Data.Repositories.Interfaces
 {
-    public interface IBrandRepository
+    public interface IClothRepository
     {
-        void Create(Brand brand);
-        IEnumerable<Brand> GetAll();
+        void Create(Cloth cloth);
+        IEnumerable<Cloth> GetAll();
+        Cloth GetById(int id);
+        void Update(Cloth cloth);
     }
 }

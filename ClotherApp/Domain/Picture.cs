@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClotherApp.Domain
+namespace ClothApp.Domain
 {
     public class Picture
     {
@@ -11,7 +11,7 @@ namespace ClotherApp.Domain
         public string Name { get; set; }
         public byte[] Image { get; set; }
 
-        public int ClotherId { get; set; }
-        public Clother Clother { get; set; }
+        public int ClothId { get; set; }
+        public Cloth Cloth { get; set; }
     }
 }

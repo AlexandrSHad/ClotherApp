@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace ClotherApp
+namespace ClothApp
 {
     public class FilterConfig
     {

@@ -150,20 +150,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ClotherController.cs" />
+    <Compile Include="Controllers\ClothController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\AppDbContext.cs" />
     <Compile Include="Data\Repositories\BrandRepository.cs" />
-    <Compile Include="Data\Repositories\ClotherRepository.cs" />
-    <Compile Include="Data\Repositories\ClotherTypeRepository.cs" />
+    <Compile Include="Data\Repositories\ClothRepository.cs" />
+    <Compile Include="Data\Repositories\ClothTypeRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IBrandRepository.cs" />
-    <Compile Include="Data\Repositories\Interfaces\IClotherRepository.cs" />
-    <Compile Include="Data\Repositories\Interfaces\IClotherTypeRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IClothRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IClothTypeRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IPictureRepository.cs" />
     <Compile Include="Data\Repositories\PictureRepository.cs" />
     <Compile Include="Domain\Brand.cs" />
-    <Compile Include="Domain\Clother.cs" />
-    <Compile Include="Domain\ClotherType.cs" />
+    <Compile Include="Domain\Cloth.cs" />
+    <Compile Include="Domain\ClothType.cs" />
     <Compile Include="Domain\Picture.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,12 +180,16 @@
     <Compile Include="Migrations\201712202018253_AddPictures.Designer.cs">
       <DependentUpon>201712202018253_AddPictures.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712211932525_RenameToCloth.cs" />
+    <Compile Include="Migrations\201712211932525_RenameToCloth.Designer.cs">
+      <DependentUpon>201712211932525_RenameToCloth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ClotherViewModel.cs" />
+    <Compile Include="Models\ClothViewModel.cs" />
     <Compile Include="Models\SelectListExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ClotherService.cs" />
-    <Compile Include="Services\Interfaces\IClotherService.cs" />
+    <Compile Include="Services\ClothService.cs" />
+    <Compile Include="Services\Interfaces\IClothService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -225,11 +229,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Clother\Create.cshtml" />
-    <Content Include="Views\Clother\Delete.cshtml" />
-    <Content Include="Views\Clother\Details.cshtml" />
-    <Content Include="Views\Clother\Edit.cshtml" />
-    <Content Include="Views\Clother\Index.cshtml" />
+    <Content Include="Views\Cloth\Create.cshtml" />
+    <Content Include="Views\Cloth\Delete.cshtml" />
+    <Content Include="Views\Cloth\Details.cshtml" />
+    <Content Include="Views\Cloth\Edit.cshtml" />
+    <Content Include="Views\Cloth\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712202018253_AddPictures.resx">
       <DependentUpon>201712202018253_AddPictures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712211932525_RenameToCloth.resx">
+      <DependentUpon>201712211932525_RenameToCloth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

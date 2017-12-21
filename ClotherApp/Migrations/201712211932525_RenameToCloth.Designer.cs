@@ -7,13 +7,13 @@ namespace ClothApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RenameClotherCodeToName : IMigrationMetadata
+    public sealed partial class RenameToCloth : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RenameClotherCodeToName));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RenameToCloth));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712171628100_RenameClotherCodeToName"; }
+            get { return "201712211932525_RenameToCloth"; }
         }
         
         string IMigrationMetadata.Source

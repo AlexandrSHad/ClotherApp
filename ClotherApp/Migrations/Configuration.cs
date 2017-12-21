@@ -1,25 +1,25 @@
-namespace ClotherApp.Migrations
+namespace ClothApp.Migrations
 {
-    using ClotherApp.Domain;
+    using ClothApp.Domain;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ClotherApp.Data.AppDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ClothApp.Data.AppDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ClotherApp.Data.AppDbContext context)
+        protected override void Seed(ClothApp.Data.AppDbContext context)
         {
             context.Brands.AddOrUpdate(_ => _.Name, new Brand { Name = "KetayMade" });
             context.Brands.AddOrUpdate(_ => _.Name, new Brand { Name = "Reebok" });
 
-            context.ClotherTypes.AddOrUpdate(_ => _.Name, new ClotherType { Name = "Sneakers" });
-            context.ClotherTypes.AddOrUpdate(_ => _.Name, new ClotherType { Name = "T-shirt" });
+            context.ClothTypes.AddOrUpdate(_ => _.Name, new ClothType { Name = "Sneakers" });
+            context.ClothTypes.AddOrUpdate(_ => _.Name, new ClothType { Name = "T-shirt" });
         }
     }
 }
