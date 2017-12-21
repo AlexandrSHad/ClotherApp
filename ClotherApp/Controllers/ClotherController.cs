@@ -87,9 +87,9 @@ namespace ClotherApp.Controllers
                     ClotherTypeId = clother.ClotherTypeId,
                     Pictures = clother.Pictures
                 },
-                FormId = new ClotherIdForm
+                UploadPictureForm = new UploadPictureForm
                 {
-                    Id = clother.Id
+                    ClotherId = clother.Id
                 }
             });
         }
@@ -137,17 +137,17 @@ namespace ClotherApp.Controllers
         //}
 
         [HttpPost]
-        public ActionResult UploadPicture([Bind(Include = "FormId")] ClotherCreateViewModel model, HttpPostedFileBase[] uploadImages)
+        public ActionResult UploadPicture([Bind(Include = "UploadPictureForm")] ClotherCreateViewModel model, HttpPostedFileBase[] uploadImages)
         {
             foreach (var img in uploadImages)
             {
                 if (img != null)
                 {
-                    _clotherService.CreatePictureForClother(model.FormId.Id, img);
+                    _clotherService.CreatePictureForClother(model.UploadPictureForm.ClotherId, img);
                 }
             }
 
-            return RedirectToAction("Edit", new { id = model.FormId.Id });
+            return RedirectToAction("Edit", new { id = model.UploadPictureForm.ClotherId });
         }
 
         //protected override void Dispose(bool disposing)

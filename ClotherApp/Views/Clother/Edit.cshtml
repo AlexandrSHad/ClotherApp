@@ -55,25 +55,27 @@
 
 @using (Html.BeginForm("UploadPicture", "Clother", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div class="form-horizontal" style="margin-top: 10px;">
-        
-        @Html.HiddenFor(m => m.FormId.Id)
+<div class="form-horizontal" style="margin-top: 10px;">
 
-        <div class="input-group">
-            <label class="input-group-btn">
-                <span class="btn btn-default">
-                    Browse...<input type="file" name="uploadImages" style="display: none;" multiple />
-                </span>
-            </label>
-            <input type="text" class="form-control" readonly>
-            <input type="submit" value="Upload" class="btn btn-default" />
-        </div>
+    @Html.HiddenFor(m => m.UploadPictureForm.ClotherId)
+
+    <div class="input-group">
+        <label class="input-group-btn">
+            <span class="btn btn-default">
+                Browse...<input type="file" name="uploadImages" style="display: none;" multiple />
+            </span>
+        </label>
+        <input type="text" class="form-control" readonly>
+        <input type="submit" value="Upload" class="btn btn-default" />
     </div>
+</div>
 }
 
 @foreach (var pic in Model.Form.Pictures)
 {
-    <img class="img-responsive" style="max-width: 300px; margin-top: 5px;" src="data:image/jpeg;base64,@Convert.ToBase64String(pic.Image)" />
+    <div style="max-width: 500px;" >
+        <img class="img-responsive" style="margin-top: 5px;" src="data:image/jpeg;base64,@Convert.ToBase64String(pic.Image)" />
+    </div>
 }
 
 @section Scripts {

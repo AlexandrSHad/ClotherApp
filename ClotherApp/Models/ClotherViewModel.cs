@@ -32,7 +32,7 @@ namespace ClotherApp.Models
         public SelectList ClotherTypes { get; set; }
         public SelectList Brands { get; set; }
         public ClotherCreateForm Form { get; set; }
-        public ClotherIdForm FormId { get; set; }
+        public UploadPictureForm UploadPictureForm { get; set; }
     }
 
     public class ClotherCreateForm
@@ -53,8 +53,8 @@ namespace ClotherApp.Models
         public List<Picture> Pictures { get; set; }
     }
 
-    public class ClotherIdForm
+    public class UploadPictureForm
     {
-        public int Id { get; set; }
+        public int ClotherId { get; set; }
     }
 }
