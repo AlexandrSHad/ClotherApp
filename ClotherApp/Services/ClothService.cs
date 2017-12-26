@@ -55,22 +55,60 @@ namespace ClothApp.Services
             return _clothTypeRepository.GetAll();
         }
 
-        public void CreatePictureForCloth(int clothId, HttpPostedFileBase uploadImage)
+        public List<Picture> GetPicturesList(HttpPostedFileBase[] uploadImages)
         {
-            byte[] imgData = new byte[uploadImage.ContentLength];
-            using (var inputStream = uploadImage.InputStream)
+            byte[] imgData;
+            var pictureList = new List<Picture>();
+
+            foreach (var img in uploadImages)
             {
-                inputStream.Read(imgData, 0, uploadImage.ContentLength);
+                if (img != null)
+                {
+                    imgData = new byte[img.ContentLength];
+
+                    using (var inputStream = img.InputStream)
+                    {
+                        inputStream.Read(imgData, 0, img.ContentLength);
+                    }
+
+                    var picture = new Picture
+                    {
+                        Image = imgData,
+                        Name = img.FileName
+                    };
+
+                    pictureList.Add(picture);
+                }
             }
 
-            var picture = new Picture
-            {
-                ClothId = clothId,
-                Image = imgData,
-                Name = uploadImage.FileName
-            };
+            return pictureList;
+        }
 
-            _pictureRepository.Create(picture);
+        public void CreatePicturesForCloth(int clothId, HttpPostedFileBase[] uploadImages)
+        {
+            byte[] imgData;
+
+            foreach (var img in uploadImages)
+            {
+                if (img != null)
+                {
+                    imgData = new byte[img.ContentLength];
+
+                    using (var inputStream = img.InputStream)
+                    {
+                        inputStream.Read(imgData, 0, img.ContentLength);
+                    }
+
+                    var picture = new Picture
+                    {
+                        ClothId = clothId,
+                        Image = imgData,
+                        Name = img.FileName
+                    };
+
+                    _pictureRepository.Create(picture);
+                }
+            }
         }
     }
 }

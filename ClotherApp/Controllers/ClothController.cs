@@ -52,13 +52,19 @@ namespace ClothApp.Controllers
         // POST: Clother/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Form")] ClothCreateViewModel model)
+        public ActionResult Create([Bind(Include = "Form")] ClothCreateViewModel model, HttpPostedFileBase[] uploadImages)
         {
-            _clotherService.CreateCloth(new Cloth {
+            var pictures = _clotherService.GetPicturesList(uploadImages);
+
+            var cloth = new Cloth
+            {
                 Name = model.Form.Name,
                 ClothTypeId = model.Form.ClothTypeId,
-                BrandId = model.Form.BrandId
-            });
+                BrandId = model.Form.BrandId,
+                Pictures = pictures
+            };
+
+            _clotherService.CreateCloth(cloth);
 
             return RedirectToAction("Index");
         }
@@ -139,13 +145,7 @@ namespace ClothApp.Controllers
         [HttpPost]
         public ActionResult UploadPicture([Bind(Include = "UploadPictureForm")] ClothCreateViewModel model, HttpPostedFileBase[] uploadImages)
         {
-            foreach (var img in uploadImages)
-            {
-                if (img != null)
-                {
-                    _clotherService.CreatePictureForCloth(model.UploadPictureForm.ClothId, img);
-                }
-            }
+            _clotherService.CreatePicturesForCloth(model.UploadPictureForm.ClothId, uploadImages);
 
             return RedirectToAction("Edit", new { id = model.UploadPictureForm.ClothId });
         }

@@ -20,6 +20,6 @@ namespace ClothApp.Services.Interfaces
         void CreateBrand(Brand brand);
         IEnumerable<Brand> GetAllBrands();
 
-        void CreatePictureForCloth(int clothId, System.Web.HttpPostedFileBase uploadImage);
+        void CreatePicturesForCloth(int clothId, System.Web.HttpPostedFileBase[] uploadImages);
     }
 }
