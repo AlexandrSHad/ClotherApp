@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using ClothApp.Domain;
+using ClothApp.Models;
+using ClotherApp.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +20,7 @@ namespace ClothApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }

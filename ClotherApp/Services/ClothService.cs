@@ -1,5 +1,7 @@
-﻿using ClothApp.Data.Repositories;
+﻿using AutoMapper;
+using ClothApp.Data.Repositories;
 using ClothApp.Domain;
+using ClothApp.Models;
 using ClothApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -20,9 +22,11 @@ namespace ClothApp.Services
             _clothRepository.Create(cloth);
         }
 
-        public IEnumerable<Cloth> GetAllClothes()
+        public IEnumerable<ClothIndexViewModel> GetAllClothes()
         {
-            return _clothRepository.GetAll();
+            var clothes = _clothRepository.GetAll();
+
+            return Mapper.Map<IEnumerable<Cloth>, List<ClothIndexViewModel>>(clothes);
         }
 
         public Cloth GetClothById(int id)

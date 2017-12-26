@@ -21,7 +21,7 @@ namespace ClothApp.Data.Repositories
 
         public IEnumerable<Cloth> GetAll()
         {
-            return _context.Clothes.Include(c => c.Brand).Include(c => c.ClothType);
+            return _context.Clothes.Include(c => c.Brand).Include(c => c.ClothType).ToList();
         }
 
         public Cloth GetById(int id)

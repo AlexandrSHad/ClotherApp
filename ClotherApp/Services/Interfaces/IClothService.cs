@@ -1,4 +1,5 @@
 ﻿using ClothApp.Domain;
+using ClothApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ClothApp.Services.Interfaces
     public interface IClothService
     {
         void CreateCloth(Cloth cloth);
-        IEnumerable<Cloth> GetAllClothes();
+        IEnumerable<ClothIndexViewModel> GetAllClothes();
         Cloth GetClothById(int id);
         void UpdateCloth(Cloth cloth);
 

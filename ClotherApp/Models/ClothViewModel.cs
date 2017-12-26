@@ -17,14 +17,6 @@ namespace ClothApp.Models
         public string ClothTypeName { get; set; }
         [Display(Name = "Brand")]
         public string BrandName { get; set; }
-
-        public ClothIndexViewModel(Cloth cloth)
-        {
-            Id = cloth.Id;
-            Name = cloth.Name;
-            ClothTypeName = cloth.ClothType.Name;
-            BrandName = cloth.Brand.Name;
-        }
     }
 
     public class ClothCreateViewModel
