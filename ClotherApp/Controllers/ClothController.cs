@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using ClothApp.Data;
 using ClothApp.Domain;
 using ClothApp.Models;
@@ -54,15 +55,13 @@ namespace ClothApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Form")] ClothCreateViewModel model, HttpPostedFileBase[] uploadImages)
         {
+
+            //Move mapping and add images to ClotherService
+
             var pictures = _clotherService.GetPicturesList(uploadImages);
 
-            var cloth = new Cloth
-            {
-                Name = model.Form.Name,
-                ClothTypeId = model.Form.ClothTypeId,
-                BrandId = model.Form.BrandId,
-                Pictures = pictures
-            };
+            var cloth = Mapper.Map<ClothCreateForm, Cloth>(model.Form);
+            cloth.Pictures = pictures;
 
             _clotherService.CreateCloth(cloth);
 

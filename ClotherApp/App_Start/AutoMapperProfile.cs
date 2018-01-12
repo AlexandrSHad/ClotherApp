@@ -9,6 +9,7 @@ namespace ClotherApp.App_Start
         public AutoMapperProfile()
         {
             CreateMap<Cloth, ClothIndexViewModel>();
+            CreateMap<ClothCreateForm, Cloth>();
         }
     }
 }
