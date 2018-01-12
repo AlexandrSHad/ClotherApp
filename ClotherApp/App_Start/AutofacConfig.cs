@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using ClothApp;
+using ClothApp.Data;
 using ClothApp.Data.Repositories;
 using ClothApp.Data.Repositories.Interfaces;
 using ClothApp.Services;
@@ -16,6 +17,8 @@ namespace ClotherApp.App_Start
             var builder = new ContainerBuilder();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+
+            builder.RegisterType<AppDbContext>().InstancePerRequest();
 
             builder.RegisterType<ClothRepository>().As<IClothRepository>();
             builder.RegisterType<ClothTypeRepository>().As<IClothTypeRepository>();

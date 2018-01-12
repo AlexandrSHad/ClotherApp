@@ -9,7 +9,12 @@ namespace ClothApp.Data.Repositories
 {
     public class PictureRepository : IPictureRepository
     {
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public PictureRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public void Create(Picture picture)
         {

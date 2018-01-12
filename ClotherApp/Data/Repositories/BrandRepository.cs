@@ -9,7 +9,12 @@ namespace ClothApp.Data.Repositories
 {
     public class BrandRepository : IBrandRepository
     {
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public BrandRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public void Create(Brand brand)
         {

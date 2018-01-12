@@ -11,7 +11,12 @@ namespace ClothApp.Data.Repositories
 {
     public class ClothRepository : IClothRepository
     {
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public ClothRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public void Create(Cloth clother)
         {
