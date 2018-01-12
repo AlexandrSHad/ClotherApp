@@ -20,7 +20,9 @@ namespace ClothApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             AutoMapperConfig.RegisterMappings();
+            AutofacConfig.RegisterDependencies();
         }
     }
 }

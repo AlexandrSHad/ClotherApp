@@ -10,18 +10,23 @@ using AutoMapper;
 using ClothApp.Data;
 using ClothApp.Domain;
 using ClothApp.Models;
-using ClothApp.Services;
+using ClothApp.Services.Interfaces;
 
 namespace ClothApp.Controllers
 {
     public class ClothController : Controller
     {
-        private readonly ClothService _clotherService = new ClothService();
+        private readonly IClothService _clothService;
+
+        public ClothController(IClothService clothService)
+        {
+            this._clothService = clothService;
+        }
 
         // GET: Clother
         public ActionResult Index()
         {
-            var clothers = _clotherService.GetAllClothes();
+            var clothers = _clothService.GetAllClothes();
             return View(clothers);
         }
 
@@ -45,8 +50,8 @@ namespace ClothApp.Controllers
         {
             return View(new ClothCreateViewModel
             {
-                ClothTypes = _clotherService.GetAllClothTypes().ToSelectList("Id", "Name"),
-                Brands = _clotherService.GetAllBrands().ToSelectList("Id", "Name"),
+                ClothTypes = _clothService.GetAllClothTypes().ToSelectList("Id", "Name"),
+                Brands = _clothService.GetAllBrands().ToSelectList("Id", "Name"),
             });
         }
 
@@ -58,12 +63,12 @@ namespace ClothApp.Controllers
 
             //Move mapping and add images to ClotherService
 
-            var pictures = _clotherService.GetPicturesList(uploadImages);
+            //var pictures = _clothService.GetPicturesList(uploadImages);
 
             var cloth = Mapper.Map<ClothCreateForm, Cloth>(model.Form);
-            cloth.Pictures = pictures;
+            //cloth.Pictures = pictures;
 
-            _clotherService.CreateCloth(cloth);
+            _clothService.CreateCloth(cloth);
 
             return RedirectToAction("Index");
         }
@@ -75,15 +80,15 @@ namespace ClothApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cloth clother = _clotherService.GetClothById(id);
+            Cloth clother = _clothService.GetClothById(id);
             if (clother == null)
             {
                 return HttpNotFound();
             }
 
             return View(new ClothCreateViewModel {
-                ClothTypes = _clotherService.GetAllClothTypes().ToSelectList("Id", "Name", clother.ClothTypeId),
-                Brands = _clotherService.GetAllBrands().ToSelectList("Id", "Name", clother.BrandId),
+                ClothTypes = _clothService.GetAllClothTypes().ToSelectList("Id", "Name", clother.ClothTypeId),
+                Brands = _clothService.GetAllBrands().ToSelectList("Id", "Name", clother.BrandId),
                 Form = new ClothCreateForm
                 {
                     Id = clother.Id,
@@ -104,7 +109,7 @@ namespace ClothApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Form")] ClothCreateViewModel model)
         {
-            _clotherService.UpdateCloth(new Cloth
+            _clothService.UpdateCloth(new Cloth
             {
                 Id = model.Form.Id,
                 Name = model.Form.Name,
@@ -144,7 +149,7 @@ namespace ClothApp.Controllers
         [HttpPost]
         public ActionResult UploadPicture([Bind(Include = "UploadPictureForm")] ClothCreateViewModel model, HttpPostedFileBase[] uploadImages)
         {
-            _clotherService.CreatePicturesForCloth(model.UploadPictureForm.ClothId, uploadImages);
+            _clothService.CreatePicturesForCloth(model.UploadPictureForm.ClothId, uploadImages);
 
             return RedirectToAction("Edit", new { id = model.UploadPictureForm.ClothId });
         }
