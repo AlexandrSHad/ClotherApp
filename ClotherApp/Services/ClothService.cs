@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ClothApp.Data.Repositories;
+using ClothApp.Data.Repositories.Interfaces;
 using ClothApp.Domain;
 using ClothApp.Models;
 using ClothApp.Services.Interfaces;
@@ -12,10 +12,19 @@ namespace ClothApp.Services
 {
     public class ClothService : IClothService
     {
-        private readonly ClothRepository _clothRepository = new ClothRepository();
-        private readonly ClothTypeRepository _clothTypeRepository = new ClothTypeRepository();
-        private readonly BrandRepository _brandRepository = new BrandRepository();
-        private readonly PictureRepository _pictureRepository = new PictureRepository();
+        private readonly IClothRepository _clothRepository;
+        private readonly IClothTypeRepository _clothTypeRepository;
+        private readonly IBrandRepository _brandRepository;
+        private readonly IPictureRepository _pictureRepository;
+
+        public ClothService(IClothRepository clothRepository, IClothTypeRepository clothTypeRepository,
+            IBrandRepository brandRepository, IPictureRepository pictureRepository)
+        {
+            this._clothRepository = clothRepository;
+            this._clothTypeRepository = clothTypeRepository;
+            this._brandRepository = brandRepository;
+            this._pictureRepository = pictureRepository;
+        }
 
         public void CreateCloth(Cloth cloth)
         {
